@@ -22,8 +22,8 @@ public class Main {
             System.out.println("Resultado: " + calcular(primeiroValor, segundoValor, operacao));
 
             continuar = (verificarNovaOperacao());
-        } while (continuar);
 
+        } while (continuar);
     }
 
     public static boolean verificarNovaOperacao() {
@@ -37,7 +37,6 @@ public class Main {
             System.out.print("Entrada inválida. Digite 'sim' ou 'não': ");
             resposta = sc.nextLine().trim().toLowerCase();
         }
-
         return resposta.equals("sim");
     }
 
@@ -60,6 +59,10 @@ public class Main {
 
             default:
                 System.out.println("Operação inválida");
+        }
+
+        if (operacao.equals("/") && segundoValor == 0) {
+            System.out.println("Erro: Divisão por zero não é permitida.");
         }
         return respostaCalculo;
     }
