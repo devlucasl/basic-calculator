@@ -2,20 +2,21 @@ package JavaCalculator;
 
 import java.util.Scanner;
 
-public class MainCalculator {
+public class Calculadora {
     protected double primeiroValor;
     protected double segundoValor;
     protected String operacao;
     protected boolean continuar = true;
 
     public void entradaDados(Scanner sc) {
+
         System.out.println("Digite o primeiro valor: ");
         primeiroValor = sc.nextDouble();
 
-        System.out.println("Digite a operacao: (+, -, *, / )");
+        System.out.println("Digite a operacao: (+,  -, *, /, raiz, potencia)");
         operacao = sc.next();
 
-        System.out.println("Digite o segundo valor: ");
+        System.out.println("Digite o segundo valor: (se a operação for raiz digite 0)");
         segundoValor = sc.nextDouble();
     }
 
@@ -64,7 +65,7 @@ public class MainCalculator {
     }
 
     public boolean verificarNovaOperacao(Scanner sc) {
-        sc.nextLine(); // Limpar o buffer
+        sc.nextLine();
         System.out.println("Deseja realizar outra operação? (sim/não) ");
         String resposta = sc.nextLine().trim().toLowerCase();
 
@@ -72,21 +73,6 @@ public class MainCalculator {
             System.out.println("Entrada inválida, digite 'sim' ou 'não': ");
             resposta = sc.nextLine().trim().toLowerCase();
         }
-
         return resposta.equals("sim");
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        MainCalculator cal = new MainCalculator();
-
-        do {
-            cal.entradaDados(sc);
-            cal.calcularOperacoes();
-            cal.continuar = cal.verificarNovaOperacao(sc);
-        } while (cal.continuar);
-
-        System.out.println("Calculadora finalizada.");
-        sc.close();
     }
 }
